@@ -1,7 +1,5 @@
 # -*- coding: utf-8 -*-
 
-
-
 import sys
 import MySQLdb
 import string
@@ -21,11 +19,19 @@ os.system("mysqldump --user=1234 --password=1234 -A > /home/backup/backup.sql")
 os.system("zip -R /home/backup/'date'.zip")
 
 #os.listdir("/home/backup")
+os.system("cd /home/backup")
 
 for archivozip in os.listdir("/home/backup"):
 	if archivozip.endswith(".zip"):
 		#copia backup
-		
+		os.system("scp archivozip backup@jarvir.titaniumsystem.es:/home/backup")
+
+	else
+		print "No hay archivos zip en el directorio"
+
+
+#borramos todo el contenido del directorio backup para dejarlo limpio
+os.system("rm -R /home/backup")
 
 
 
