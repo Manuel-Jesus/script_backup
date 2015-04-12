@@ -8,6 +8,7 @@ import os
 #copias de carpetas
 os.system("cp -R /var/www /home/bakup")
 os.system("cp -R /srv/titaniumsystem /home/backup")
+os.system("cp -R /etc/apache2/sites-available/ /home/backup")
 os.system("cp -R /var/lib/mysql /home/backup")
 
 
