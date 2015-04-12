@@ -16,6 +16,7 @@ os.system("cp -R /var/lib/mysql /home/backup")
 os.system("mysqldump --user=1234 --password=1234 -A > /home/backup/backup.sql")
 
 
+
 #compresion en un .zip 
 os.system("zip -R /home/backup/'date'.zip")
 
