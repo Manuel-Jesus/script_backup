@@ -13,7 +13,7 @@ os.system("cp -R /var/lib/mysql /home/backup")
 
 
 #exportacion de la base de datos
-os.system("mysqldump --user=1234 --password=1234 -A > /home/backup/backup.sql")
+os.system("mysqldump --user=11111 --password=11111 -A > /home/backup/backup.sql")
 
 
 
@@ -23,13 +23,17 @@ os.system("zip -R /home/backup/'date'.zip")
 #os.listdir("/home/backup")
 os.system("cd /home/backup")
 
-for archivozip in os.listdir("/home/backup"):
-	if archivozip.endswith(".zip"):
-		#copia backup
-		os.system("scp archivozip backup@jarvir.titaniumsystem.es:/home/backup")
+hayarchivozip = False
 
-	else
-		print "No hay archivos zip en el directorio"
+for archivozip in os.listdir("/home/backup"):
+        if archivozip.endswith(".zip"):
+                #copia backup
+                os.system("sshpass -p '1111' scp archivozip backup@192.168.122.188:/home/backup")
+                hayarchivozip = true
+
+if not hayarchivozip:
+        print "no hay archivo zip"
+
 
 
 #borramos todo el contenido del directorio backup para dejarlo limpio
