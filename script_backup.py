@@ -1,17 +1,24 @@
 # -*- coding: utf-8 -*-
-
-import sys
-import MySQLdb
+import time
+import json
 import string
 import os
 
 
+#cargamos la configuracion
+
+settingsf=open("settings.json")
+settings=json.load(settingsf)
+directorios=settings["directorios"]
+directorioTemporal=settings["directorioTemporal"]
+destino_user=settings["destino_user"]
+destino_host=settings["destino_host"]
+destino_dir=settings["destino_dir"]
 
 #copias de carpetas
-os.system("cp -R /var/www /home/bakup")
-os.system("cp -R /srv/titaniumsystem /home/backup")
-os.system("cp -R /etc/apache2/sites-enabled/ /home/backup")
-os.system("cp -R /etc/apache2/sites-avaiable/ /home/backup")
+for carpeta in directorios:
+    os.system("cp "+carpeta+" "+directorioTemporal)
+
 #os.system("cp -R /var/lib/mysql /home/backup")#ya hacemos mysqldump
 
 
@@ -21,8 +28,7 @@ os.system("mysqldump --user=11111 --password=11111 -A > /home/backup/backup.sql"
 
 
 #compresion en un .zip
-fecha=time.strftime("%x").replace('/','_')
-
+fecha=time.strftime('%Y_%m_%d')
 os.system("zip -R /home/backup/"+fecha+".zip")
 
 #os.listdir("/home/backup")

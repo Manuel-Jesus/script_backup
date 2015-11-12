@@ -1,4 +1,16 @@
-# script_backup
+## script_backup
+#Aun no terminado
 
-Este script consistirá en hacer una copia de seguridad de un servidor en otro de los direcctorios de los virtual host,
-de la base de datos y los ficheros de configuración de apache. 
+Este script creará una copia comprimida de los directorios indicados en el archivo de configuración y los copiará mediante scp al servidor indicado.
+
+Trabajo en progreso:
+#Por hacer:
+*Testear
+*Copia de mysql
+*Mantener solo un numero de copias
+*Documentación
+
+#Posibles mejoras
+*Copias incrementales
+*Multihilo
+*Multiples tipos de compresión
