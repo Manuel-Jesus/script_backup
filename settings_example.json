@@ -1,0 +1,9 @@
+{
+  "directorios":["/srv", "/etc"],
+  "directorioTemporal":"directorio que luego será eliminado",
+  "destino_user":"",
+  "destino_host":"",
+  "destino_dir":"",
+  "sql_usuario":"",
+  "sql_pass":""
+}
