@@ -22,26 +22,6 @@ fecha=time.strftime('%Y-%m-%d')
 
 #exportacion de la base de datos
 os.system("mysqldump --user="+sql_usuario+" -p"+sql_pass+" -A > "+directorioTemporal+fecha+".sql")
-
+os.system("zip "+directorioTemporal+fecha+".zip")
 for carpeta in directorios:
     os.system("zip -R "+directorioTemporal+fecha+".zip" + " "+carpeta)
-
-
-#os.listdir("/home/backup")
-os.system("cd /home/backup")
-
-hayarchivozip = False
-
-for archivozip in os.listdir("/home/backup"):
-        if archivozip.endswith(".zip"):
-                #copia backup
-                os.system("sshpass -p '1111' scp archivozip backup@192.168.122.188:/home/backup")
-                hayarchivozip = true
-
-if not hayarchivozip:
-        print "no hay archivo zip"
-
-
-
-#borramos todo el contenido del directorio backup para dejarlo limpio
-os.system("rm -R /home/backup")
