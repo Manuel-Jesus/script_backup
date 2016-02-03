@@ -5,12 +5,14 @@ Este script creará una copia comprimida de los directorios indicados en el arch
 
 Trabajo en progreso:
 #Por hacer:
-*Testear
-*Copia de mysql
-*Mantener solo un numero de copias
-*Documentación
+**Testear
+**Copias de archivos por scp
+**eliminar archivos temporales
+**documentación
 
 #Posibles mejoras
-*Copias incrementales
-*Multihilo
-*Multiples tipos de compresión
+**Copias incrementales
+**Multihilo
+**Multiples tipos de compresión
+**Crear el zip por sshfs directamente
+**Eliminar automaticamente copias?
