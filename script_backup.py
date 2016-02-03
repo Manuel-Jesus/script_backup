@@ -17,16 +17,14 @@ destino_dir=settings["destino_dir"]
 sql_usuario=settings["sql_usuario"]
 sql_pass=settings["sql_pass"]
 
-#copias de carpetas
-for carpeta in directorios:
-    os.system("cp -R "+carpeta+" "+directorioTemporal)
-
-#compresion en un .zip
-fecha=time.strftime('%Y_%m_%d')
-os.system("zip -R /home/backup/"+fecha+".zip")
+#calculamos la fecha
+fecha=time.strftime('%Y-%m-%d')
 
 #exportacion de la base de datos
 os.system("mysqldump --user="+sql_usuario+" -p"+sql_pass+" -A > "+directorioTemporal+fecha+".sql")
+
+for carpeta in directorios:
+    os.system("zip -R "+directorioTemporal+fecha+".zip" + " "+carpeta)
 
 
 #os.listdir("/home/backup")
