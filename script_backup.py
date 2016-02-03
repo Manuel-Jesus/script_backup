@@ -14,22 +14,20 @@ directorioTemporal=settings["directorioTemporal"]
 destino_user=settings["destino_user"]
 destino_host=settings["destino_host"]
 destino_dir=settings["destino_dir"]
+sql_usuario=settings["sql_usuario"]
+sql_pass=settings["sql_pass"]
 
 #copias de carpetas
 for carpeta in directorios:
-    os.system("cp "+carpeta+" "+directorioTemporal)
-
-#os.system("cp -R /var/lib/mysql /home/backup")#ya hacemos mysqldump
-
-
-#exportacion de la base de datos
-os.system("mysqldump --user=11111 --password=11111 -A > /home/backup/backup.sql")
-
-
+    os.system("cp -R "+carpeta+" "+directorioTemporal)
 
 #compresion en un .zip
 fecha=time.strftime('%Y_%m_%d')
 os.system("zip -R /home/backup/"+fecha+".zip")
+
+#exportacion de la base de datos
+os.system("mysqldump --user="+sql_usuario+" -p"+sql_pass+" -A > "+directorioTemporal+fecha+".sql")
+
 
 #os.listdir("/home/backup")
 os.system("cd /home/backup")
