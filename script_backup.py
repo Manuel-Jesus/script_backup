@@ -22,6 +22,7 @@ fecha=time.strftime('%Y-%m-%d')
 
 #exportacion de la base de datos
 os.system("mysqldump --user="+sql_usuario+" -p"+sql_pass+" -A > "+directorioTemporal+fecha+".sql")
-os.system("zip "+directorioTemporal+fecha+".zip")
+os.system("zip "+directorioTemporal+fecha+".zip "+directorioTemporal+fecha+".sql")
+
 for carpeta in directorios:
-    os.system("zip -R "+directorioTemporal+fecha+".zip" + " "+carpeta)
+    os.system("zip -r "+directorioTemporal+fecha+".zip" + " "+carpeta)
