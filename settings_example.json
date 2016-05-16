@@ -1,6 +1,6 @@
 {
   "directorios":["/srv", "/etc"],
-  "directorioTemporal":"directorio que luego será eliminado",
+  "directorioTemporal":"/tmp/",
   "destino_user":"",
   "destino_host":"",
   "destino_dir":"",
