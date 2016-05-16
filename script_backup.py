@@ -4,9 +4,10 @@ import json
 import string
 import os
 
+#calculamos la fecha en el formato necesario
+fecha=time.strftime('%Y-%m-%d')
 
 #cargamos la configuracion
-
 settingsf=open("settings.json")
 settings=json.load(settingsf)
 directorios=settings["directorios"]
@@ -16,14 +17,26 @@ destino_host=settings["destino_host"]
 destino_dir=settings["destino_dir"]
 sql_usuario=settings["sql_usuario"]
 sql_pass=settings["sql_pass"]
+hostname=settings["hostname"]
+nombreArchivo=hostname+"_"+fecha
+direccionArchivo=directorioTemporal+nombreArchivo
 
-#calculamos la fecha
-fecha=time.strftime('%Y-%m-%d')
+
 
 #exportacion de la base de datos
-os.system("mysqldump --user="+sql_usuario+" -p"+sql_pass+" -A > "+directorioTemporal+fecha+".sql")
-print ("mysqldump --user="+sql_usuario+" -p"+sql_pass+" -A > "+directorioTemporal+fecha+".sql")
-os.system("zip -r "+directorioTemporal+fecha+".zip "+directorioTemporal+fecha+".sql")
+os.system("mysqldump --user="+sql_usuario+" -p"+sql_pass+" -A > "+direccionArchivo+".sql")
+#print ("mysqldump --user="+sql_usuario+" -p"+sql_pass+" -A > "+direccionArchivo+".sql")
+os.system("zip -r "+direccionArchivo+".zip "+direccionArchivo+".sql")
+os.system("rm "+direccionArchivo+".sql")#borrando archivo sql innecesario
 
+
+#Comprimiendo directorios indicados
 for carpeta in directorios:
-    os.system("zip -r "+directorioTemporal+fecha+".zip" + " "+carpeta)
+    os.system("zip -r "+direccionArchivo+".zip" + " "+carpeta)
+
+#Copiamos archivo a la maquina de destino con SCP
+os.system("scp "+direccionArchivo+".zip "+destino_user+"@"+destino_host+":"+destino_dir)
+
+#borramos el zip creado
+
+os.system("rm "+direccionArchivo+".zip")

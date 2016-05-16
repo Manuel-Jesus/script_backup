@@ -5,5 +5,6 @@
   "destino_host":"",
   "destino_dir":"",
   "sql_usuario":"",
-  "sql_pass":""
+  "sql_pass":"",
+  "hostname":"hostname"
 }
