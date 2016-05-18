@@ -17,4 +17,4 @@ os.system('ssh-keygen -b 4096 -t rsa -f ~/.ssh/'+hostname+' -q -N ""')
 
 #Copiamos la clave ssh al destino
 
-os.system('ssh-copy-id '+destino_user+'@'+destino_host)
+os.system('ssh-copy-id -i ~/.ssh/'+hostname+' '+destino_user+'@'+destino_host)

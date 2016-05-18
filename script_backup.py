@@ -35,7 +35,7 @@ for carpeta in directorios:
     os.system("zip -r "+direccionArchivo+".zip" + " "+carpeta)
 
 #Copiamos archivo a la maquina de destino con SCP
-os.system("scp "+direccionArchivo+".zip "+destino_user+"@"+destino_host+":"+destino_dir)
+os.system("scp -i ~/.ssh/"+hostname+" "+direccionArchivo+".zip "+destino_user+"@"+destino_host+":"+destino_dir)
 
 #borramos el zip creado
 
