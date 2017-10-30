@@ -6,5 +6,6 @@
   "destino_dir":"",
   "sql_usuario":"",
   "sql_pass":"",
-  "hostname":"hostname"
+  "hostname":"hostname",
+  "local_load_folder":"/home/remote"
 }
