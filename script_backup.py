@@ -25,7 +25,7 @@ direccionArchivo=local_load_folder+nombreArchivo
 
 #montando directorio remoto
 
-os.system("sshfs "+destino_user+"@"+destino_host+":"+destino_dir+" "+local_load_folder+" -o IdentiyFile=~/.ssh/"+hostname)
+os.system("sshfs "+destino_user+"@"+destino_host+":"+destino_dir+" "+local_load_folder+" -o IdentityFile=~/.ssh/"+hostname)
 
 
 #exportacion de la base de datos
